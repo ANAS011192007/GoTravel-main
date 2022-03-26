@@ -198,6 +198,7 @@
               color:#01b3a7;
             }
             #ratings_box{
+              margin-top: 5px;
               height: 35px;
               width: 35px;
               border: 5px solid rgb(60, 36, 201);
@@ -208,10 +209,12 @@
               font-weight: bold;
             }
             #rating{
+              
               float:right;
               font-weight: bold;
             }
             #reviews{
+              margin-top: 5px;
               font-weight:lighter;
               font-size: smaller;
               text-align: right;
@@ -241,9 +244,37 @@
             color: black;
             font-size: xx-large;
             }
-           
+           .checked{
+             float: left;
+             color: orange;
+           }
         </style>
       </header>
+
+    <?php
+  include_once 'db_connect.php';
+  if(isset($_POST['search'])){
+    $city=$_POST['city'];
+    $adult=$_POST['adult'];
+    $children=$_POST['children'];
+    $room=$_POST['room'];
+    $room_type=$_POST['room_type'];
+    $bed=$_POST['bed'];
+    $query1=$sql = "SELECT * FROM hotel WHERE
+     (District=\"'$city'\" OR Thana =\"'$city'\") && Room_Type LIKE
+      \''$room_type'\' && Room_Available>='$room' && No_of_beds>='$bed';";
+      $result1=$conn->query($query1);  
+  if($result2->num_rows>0){
+    $star="Star";
+    $rating="Rating";
+    $room_available="Room_Available";
+    $price="Price";
+    $features="Features";
+    $reviews="Reviews";
+  }
+}
+    ?>
+
       <div class="row">
 <div class="column right">
   <div class = "cards">
@@ -263,13 +294,13 @@
         <input type="checkbox" id="Rating2" name="Rating2" value="1">
         <label for="vehicle3"> 1 star</label><br>
         <input type="checkbox" id="Rating3" name="Rating3" value="2">
-        <label for="vehicle3"> 2 star</label><br>
+        <label for="vehicle3"> 2 stars</label><br>
         <input type="checkbox" id="Rating4" name="Rating4" value="3">
         <label for="vehicle3"> 3 stars</label><br>
         <input type="checkbox" id="Rating5" name="Rating5" value="4">
-        <label for="vehicle3"> 4 star</label><br>
+        <label for="vehicle3"> 4 stars</label><br>
         <input type="checkbox" id="Rating6" name="Rating6" value="5">
-        <label for="vehicle3"> 5 star</label><br>
+        <label for="vehicle3"> 5 stars</label><br>
         <input type="checkbox" id="score1" name="score1" value="9">
         <label for="vehicle3"> Excellent - 9+</label><br>
         <input type="checkbox" id="score2" name="score2" value="8">
@@ -295,7 +326,7 @@
 <div id="No_of_hotels"><b>Dhaka: 5 hotels found</b></div>
 <div id="hotels">
     <div id="hotelall">
-      <img id="images" src="img/hotel1.jpg" alt="Hotel 1">
+      <img id="images" src="images/hotel1.jpg" alt="Hotel 1">
       <span id="hotel_Name">Radisson Blu Dhaka Water Garden
          <br> <span id="Location"><u>Dhaka</u>&nbsp;<a href="#"><u>Show on Map</u></a>
           <br><span id="qualities">Breakfast Included</span>
@@ -307,13 +338,20 @@
         <br>
         <span id="Taka">BDT 20,000 &nbsp;<button class="button-29" role="button">Book Now</button></span>
       </span> 
-      <span id="rating">Very Good<br><span id="reviews">30 reviews</span></span>     
+      <span id="rating">Very Good<br><span id="reviews">30 reviews<br></span>
+      <span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>    
+    </span>     
       <span id="ratings_box">8.2</span>
     </div>
 
 </div>
 </div>
       </div>
+  
 <!-- Eikhane change korbiiii -->
 
 <br>

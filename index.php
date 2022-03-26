@@ -99,7 +99,7 @@
             <div class="container ie-h-align-center-fix">
                 <div class="row">
                     <div class="col-xs-12 ml-auto mr-auto ie-container-width-fix">
-                        <form action="index.html" method="get" class="tm-search-form tm-section-pad-2">
+                        <form action="hotels.php" method="POST" class="tm-search-form tm-section-pad-2">
                             <div class="form-row tm-search-form-row">
                                 <div class="form-group tm-form-element tm-form-element-100">
                                     <i class="fa fa-map-marker fa-2x tm-form-element-icon"></i>
@@ -165,7 +165,7 @@
                                     <i class="fa fa-2x fa-bed tm-form-element-icon"></i>
                                 </div>
                                 <div class="form-group tm-form-element tm-form-element-50">
-                                  <select name="room" class="form-control tm-select" id="room">
+                                  <select name="room_type" class="form-control tm-select" id="room">
                                       <option value="">Room type</option>
                                       <option value="1">Deluxe Room</option>
                                       <option value="2">Premium Twin Room</option>
@@ -178,7 +178,7 @@
                                   <i class="fa fa-2x fa-bed tm-form-element-icon"></i>
                               </div>
                               <div class="form-group tm-form-element tm-form-element-50">
-                                <select name="room" class="form-control tm-select" id="room">
+                                <select name="bed" class="form-control tm-select" id="room">
                                     <option value="">No. of beds</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -187,7 +187,7 @@
                                 <i class="fa fa-2x fa-bed tm-form-element-icon"></i>
                             </div>
                                 <div class="form-group tm-form-element tm-form-element-50">
-                                    <button type="submit" class="btn btn-primary tm-btn-search">Check Availability</button>
+                                    <button type="submit" value="search" class="btn btn-primary tm-btn-search">Check Availability</button>
                                 </div>
                               </div>
                               <div class="form-row clearfix pl-2 pr-2 tm-fx-col-xs">
