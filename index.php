@@ -12,6 +12,13 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">  <!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">                <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">                                      <!-- Bootstrap style -->
+    <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="css/datepicker.css"/>
+    <link rel="stylesheet" href="css/tooplate-style.css">  
     <style>.ie-panel{display: none;background: #212121;padding: 10px 0;box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);clear: both;text-align:center;position: relative;z-index: 1;} html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {display: block;}</style>
   </head>
   <body>
@@ -38,7 +45,7 @@
                   <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
                   <!-- RD Navbar Brand-->
                   <div class="rd-navbar-brand">
-                    <!--Brand--><a class="brand" href="index.php"><img src="images/logo-default-450x37.png" alt="" width="225" height="18"/></a>
+                    <!--Brand--><a class="brand" href="index.html"><img src="images/logo-default-450x37.png" alt="" width="225" height="18"/></a>
                   </div>
                 </div>
                 <div class="rd-navbar-aside-right rd-navbar-collapse">
@@ -72,13 +79,13 @@
                   </ul>
                   <!-- RD Navbar Nav-->
                   <ul class="rd-navbar-nav">
-                    <li class="rd-nav-item active"><a class="rd-nav-link" href="index.php">Home</a>
+                    <li class="rd-nav-item active"><a class="rd-nav-link" href="index.html">Home</a>
                     </li>
-                    <li class="rd-nav-item"><a class="rd-nav-link" href="about.php">About</a>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="about.html">About</a>
                     </li>
-                    <li class="rd-nav-item"><a class="rd-nav-link" href="typography.php">Typography</a>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="typography.html">Typography</a>
                     </li>
-                    <li class="rd-nav-item"><a class="rd-nav-link" href="contact-us.php">Contact Us</a>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="contact-us.html">Contact Us</a>
                     </li>
                   </ul>
                 </div>
@@ -87,6 +94,112 @@
           </nav>
         </div>
       </header>
+      <div class="tm-section tm-bg-img" id="tm-section-1">
+        <div class="tm-bg-white ie-container-width-fix-2">
+            <div class="container ie-h-align-center-fix">
+                <div class="row">
+                    <div class="col-xs-12 ml-auto mr-auto ie-container-width-fix">
+                        <form action="index.html" method="get" class="tm-search-form tm-section-pad-2">
+                            <div class="form-row tm-search-form-row">
+                                <div class="form-group tm-form-element tm-form-element-100">
+                                    <i class="fa fa-map-marker fa-2x tm-form-element-icon"></i>
+                                    <input name="city" type="text" class="form-control" id="inputCity" placeholder="Type your destination...">
+                                </div>
+                                <div class="form-group tm-form-element tm-form-element-50">
+                                    <i class="fa fa-calendar fa-2x tm-form-element-icon"></i>
+                                    <input name="check-in" type="text" class="form-control" id="inputCheckIn" placeholder="Check In">
+                                </div>
+                                <div class="form-group tm-form-element tm-form-element-50">
+                                    <i class="fa fa-calendar fa-2x tm-form-element-icon"></i>
+                                    <input name="check-out" type="text" class="form-control" id="inputCheckOut" placeholder="Check Out">
+                                </div>
+                            </div>
+                            <div class="form-row tm-search-form-row">
+                                <div class="form-group tm-form-element tm-form-element-50">                                            
+                                    <select name="adult" class="form-control tm-select" id="adult">
+                                        <option value="">Adult</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                    <i class="fa fa-2x fa-user tm-form-element-icon"></i>
+                                </div>
+                                <div class="form-group tm-form-element tm-form-element-50">                                            
+                                    <select name="children" class="form-control tm-select" id="children">
+                                        <option value="">Children</option>
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                    <i class="fa fa-user tm-form-element-icon tm-form-element-icon-small"></i>
+                                </div>
+                                <div class="form-group tm-form-element tm-form-element-50">
+                                    <select name="room" class="form-control tm-select" id="room">
+                                        <option value="">Room</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                    <i class="fa fa-2x fa-bed tm-form-element-icon"></i>
+                                </div>
+                                <div class="form-group tm-form-element tm-form-element-50">
+                                  <select name="room" class="form-control tm-select" id="room">
+                                      <option value="">Room type</option>
+                                      <option value="1">Deluxe Room</option>
+                                      <option value="2">Premium Twin Room</option>
+                                      <option value="3">Superior Double Room</option>
+                                      <option value="4">Premium Room</option>
+                                      <option value="5">Standard Room</option>
+                                      <option value="6">Family Suite</option>
+                                      <option value="7">Superior Room</option>
+                                  </select>
+                                  <i class="fa fa-2x fa-bed tm-form-element-icon"></i>
+                              </div>
+                              <div class="form-group tm-form-element tm-form-element-50">
+                                <select name="room" class="form-control tm-select" id="room">
+                                    <option value="">No. of beds</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                                <i class="fa fa-2x fa-bed tm-form-element-icon"></i>
+                            </div>
+                                <div class="form-group tm-form-element tm-form-element-50">
+                                    <button type="submit" class="btn btn-primary tm-btn-search">Check Availability</button>
+                                </div>
+                              </div>
+                              <div class="form-row clearfix pl-2 pr-2 tm-fx-col-xs">
+                                  <p class="tm-margin-b-0"></p>
+                                  <a href="#" class="ie-10-ml-auto ml-auto mt-1 tm-font-semibold tm-color-primary">Need Help?</a>
+                              </div>
+                        </form>
+                    </div>                        
+                </div>      
+            </div>
+        </div>                  
+    </div>
       <!-- Swiper-->
       <section class="section swiper-container swiper-slider swiper-slider-corporate swiper-pagination-style-2" data-loop="true" data-autoplay="5000" data-simulate-touch="true" data-nav="false" data-direction="vertical">
         <div class="swiper-wrapper text-left">
@@ -184,15 +297,15 @@
                   <div class="tab-content">
                     <div class="tab-pane fade show active" id="tabs-7-1">
                       <p>Wonder Tour is committed to bringing our clients the best in value and quality travel arrangements. We are passionate about travel and sharing the world's wonders with you.</p>
-                      <div class="group-md group-middle"><a class="button button-secondary button-pipaluk" href="contact-us.php">Get in Touch</a><a class="button button-black-outline button-md" href="about.php">Read More</a></div>
+                      <div class="group-md group-middle"><a class="button button-secondary button-pipaluk" href="contact-us.html">Get in Touch</a><a class="button button-black-outline button-md" href="about.html">Read More</a></div>
                     </div>
                     <div class="tab-pane fade" id="tabs-7-2">
                       <p>We are proud to offer excellent quality and value for money in our tours, which give you the chance to experience your chosen destination in an authentic and exciting way.</p>
-                      <div class="group-md group-middle"><a class="button button-secondary button-pipaluk" href="contact-us.php">Get in Touch</a><a class="button button-black-outline button-md" href="about.php">Read More</a></div>
+                      <div class="group-md group-middle"><a class="button button-secondary button-pipaluk" href="contact-us.html">Get in Touch</a><a class="button button-black-outline button-md" href="about.html">Read More</a></div>
                     </div>
                     <div class="tab-pane fade" id="tabs-7-3">
                       <p>Our mission is to provide the ultimate travel planning experience while becoming a one-stop shop for every travel service available in the industry.</p>
-                      <div class="group-md group-middle"><a class="button button-secondary button-pipaluk" href="contact-us.php">Get in Touch</a><a class="button button-black-outline button-md" href="about.php">Read More</a></div>
+                      <div class="group-md group-middle"><a class="button button-secondary button-pipaluk" href="contact-us.html">Get in Touch</a><a class="button button-black-outline button-md" href="about.html">Read More</a></div>
                     </div>
                   </div>
                 </div>
@@ -533,7 +646,7 @@
                   <div class="wow slideInLeft" data-wow-delay="0s">
                     <h6 class="text-spacing-100 text-uppercase">Quick links</h6>
                     <ul class="row-6 list-0 list-marked list-marked-md list-marked-secondary list-custom-2">
-                      <li><a href="about.php">About us</a></li>
+                      <li><a href="about.html">About us</a></li>
                       <li><a href="#">Our Tours</a></li>
                       <li><a href="#">Our Team</a></li>
                       <li><a href="#">Gallery</a></li>
@@ -576,5 +689,148 @@
     <!-- Javascript-->
     <script src="js/core.min.js"></script>
     <script src="js/script.js"></script>
+                <!-- jQuery (https://jquery.com/download/) -->
+                      <!-- https://popper.js.org/ -->       
+                  <!-- https://getbootstrap.com/ -->
+    <script src="js/datepicker.min.js"></script>                <!-- https://github.com/qodesmith/datepicker -->
+          <!-- Single Page Nav (https://github.com/ChrisWojcik/single-page-nav) -->     
+          <script>
+
+            /* Google map
+            ------------------------------------------------*/
+            var map = '';
+            var center;
+
+            function initialize() {
+                var mapOptions = {
+                    zoom: 16,
+                    center: new google.maps.LatLng(13.7567928,100.5653741),
+                    scrollwheel: false
+                };
+
+                map = new google.maps.Map(document.getElementById('google-map'),  mapOptions);
+
+                google.maps.event.addDomListener(map, 'idle', function() {
+                  calculateCenter();
+              });
+
+                google.maps.event.addDomListener(window, 'resize', function() {
+                  map.setCenter(center);
+              });
+            }
+
+            function calculateCenter() {
+                center = map.getCenter();
+            }
+
+            function loadGoogleMap(){
+                var script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDVWt4rJfibfsEDvcuaChUaZRS5NXey1Cs&v=3.exp&sensor=false&' + 'callback=initialize';
+                document.body.appendChild(script);
+            } 
+
+            function setCarousel() {
+                
+                if ($('.tm-article-carousel').hasClass('slick-initialized')) {
+                    $('.tm-article-carousel').slick('destroy');
+                } 
+
+                if($(window).width() < 438){
+                    // Slick carousel
+                    $('.tm-article-carousel').slick({
+                        infinite: false,
+                        dots: true,
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    });
+                }
+                else {
+                 $('.tm-article-carousel').slick({
+                        infinite: false,
+                        dots: true,
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    });   
+                }
+            }
+
+            function setPageNav(){
+                if($(window).width() > 991) {
+                    $('#tm-top-bar').singlePageNav({
+                        currentClass:'active',
+                        offset: 79
+                    });   
+                }
+                else {
+                    $('#tm-top-bar').singlePageNav({
+                        currentClass:'active',
+                        offset: 65
+                    });   
+                }
+            }
+
+            function togglePlayPause() {
+                vid = $('.tmVideo').get(0);
+
+                if(vid.paused) {
+                    vid.play();
+                    $('.tm-btn-play').hide();
+                    $('.tm-btn-pause').show();
+                }
+                else {
+                    vid.pause();
+                    $('.tm-btn-play').show();
+                    $('.tm-btn-pause').hide();   
+                }  
+            }
+       
+            $(document).ready(function(){
+
+                $(window).on("scroll", function() {
+                    if($(window).scrollTop() > 100) {
+                        $(".tm-top-bar").addClass("active");
+                    } else {
+                        //remove the background property so it comes transparent again (defined in your css)
+                       $(".tm-top-bar").removeClass("active");
+                    }
+                });      
+
+                // Google Map
+                loadGoogleMap();  
+
+                // Date Picker
+                const pickerCheckIn = datepicker('#inputCheckIn');
+                const pickerCheckOut = datepicker('#inputCheckOut');
+                
+                // Slick carousel
+                setCarousel();
+                setPageNav();
+
+                $(window).resize(function() {
+                  setCarousel();
+                  setPageNav();
+                });
+
+                // Close navbar after clicked
+                $('.nav-link').click(function(){
+                    $('#mainNav').removeClass('show');
+                });
+
+                // Control video
+                $('.tm-btn-play').click(function() {
+                    togglePlayPause();                                      
+                });
+
+                $('.tm-btn-pause').click(function() {
+                    togglePlayPause();                                      
+                });
+
+                // Update the current year in copyright
+                $('.tm-current-year').text(new Date().getFullYear());                           
+            });
+
+        </script>             
+    
   </body>
 </html>
