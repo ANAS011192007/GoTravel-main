@@ -102,16 +102,16 @@
                         <form action="hotels.php" method="POST" class="tm-search-form tm-section-pad-2">
                             <div class="form-row tm-search-form-row">
                                 <div class="form-group tm-form-element tm-form-element-100">
-                                    <i class="fa fa-map-marker fa-2x tm-form-element-icon"></i>
+                                    <i class="fa fa-map-marker fa-x tm-form-element-icon"></i>
                                     <input name="city" type="text" class="form-control" id="inputCity" placeholder="Type your destination...">
                                 </div>
                                 <div class="form-group tm-form-element tm-form-element-50">
-                                    <i class="fa fa-calendar fa-2x tm-form-element-icon"></i>
-                                    <input name="check-in" type="text" class="form-control" id="inputCheckIn" placeholder="Check In">
+                                    <i class="fa fa-calendar fa-x tm-form-element-icon"></i>
+                                    <input name="check-in" type="date" class="form-control"  placeholder="Check In">
                                 </div>
                                 <div class="form-group tm-form-element tm-form-element-50">
-                                    <i class="fa fa-calendar fa-2x tm-form-element-icon"></i>
-                                    <input name="check-out" type="text" class="form-control" id="inputCheckOut" placeholder="Check Out">
+                                    <i class="fa fa-calendar fa-x tm-form-element-icon"></i>
+                                    <input name="check-out" type="date" class="form-control" placeholder="Check Out">
                                 </div>
                             </div>
                             <div class="form-row tm-search-form-row">
@@ -129,7 +129,7 @@
                                         <option value="9">9</option>
                                         <option value="10">10</option>
                                     </select>
-                                    <i class="fa fa-2x fa-user tm-form-element-icon"></i>
+                                    <i class="fa fa-x fa-user tm-form-element-icon"></i>
                                 </div>
                                 <div class="form-group tm-form-element tm-form-element-50">                                            
                                     <select name="children" class="form-control tm-select" id="children">
@@ -162,20 +162,20 @@
                                         <option value="9">9</option>
                                         <option value="10">10</option>
                                     </select>
-                                    <i class="fa fa-2x fa-bed tm-form-element-icon"></i>
+                                    <i class="fa fa-x fa-bed tm-form-element-icon"></i>
                                 </div>
                                 <div class="form-group tm-form-element tm-form-element-50">
                                   <select name="room_type" class="form-control tm-select" id="room">
                                       <option value="">Room type</option>
-                                      <option value="1">Deluxe Room</option>
-                                      <option value="2">Premium Twin Room</option>
-                                      <option value="3">Superior Double Room</option>
-                                      <option value="4">Premium Room</option>
-                                      <option value="5">Standard Room</option>
-                                      <option value="6">Family Suite</option>
-                                      <option value="7">Superior Room</option>
+                                      <option value="Deluxe Room">Deluxe Room</option>
+                                      <option value="Premium Twin Room">Premium Twin Room</option>
+                                      <option value="Superior Double Room">Superior Double Room</option>
+                                      <option value="Premium Room">Premium Room</option>
+                                      <option value="Standard Room">Standard Room</option>
+                                      <option value="Family Suite">Family Suite</option>
+                                      <option value="Superior Room">Superior Room</option>
                                   </select>
-                                  <i class="fa fa-2x fa-bed tm-form-element-icon"></i>
+                                  <i class="fa fa-x fa-bed tm-form-element-icon"></i>
                               </div>
                               <div class="form-group tm-form-element tm-form-element-50">
                                 <select name="bed" class="form-control tm-select" id="room">
@@ -184,10 +184,10 @@
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                 </select>
-                                <i class="fa fa-2x fa-bed tm-form-element-icon"></i>
+                                <i class="fa fa-x fa-bed tm-form-element-icon"></i>
                             </div>
                                 <div class="form-group tm-form-element tm-form-element-50">
-                                    <button type="submit" value="search" class="btn btn-primary tm-btn-search">Check Availability</button>
+                                    <input value="Check Availability" type="submit" name="search" class="btn btn-primary tm-btn-search">
                                 </div>
                               </div>
                               <div class="form-row clearfix pl-2 pr-2 tm-fx-col-xs">

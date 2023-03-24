@@ -1,22 +1,16 @@
+<?php error_reporting (E_ALL ^ E_NOTICE); ?>
 <?php
 session_start();
-     include_once 'db_connect.php';
-  if(isset($_POST['search'])){
-    $count=0;
-     $city=$_POST['city'];
-    $adult=$_POST['adult'];
-    $children=$_POST['children'];
-    $room=$_POST['room'];
-    $room_type=$_POST['room_type'];
-    $bed=$_POST['bed'];
-    $check_in=strtotime($_POST['check-in']);
-    $check_out=strtotime($_POST['check-out']);
-    $interval = ($check_out-$check_in)/60/60/24;
-    $check_ins=$_POST['check-in'];
-    $check_outs=$_POST['check-out'];
-  }
-  ?>
-  
+$city=$_POST['city'];
+$adult=$_POST['adult'];
+$children=$_POST['children'];
+$room=$_POST['room'];
+$room_type=$_POST['room_type'];
+$bed=$_POST['bed'];
+$interval =$_POST['interval'];
+$check_ins=$_POST['check_ins'];
+$check_outs=$_POST['check_outs'];
+?>
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
   <head>
@@ -323,95 +317,144 @@ session_start();
         <label for="vehicle3"> Free WiFi</label><br>
         <input type="radio" id="AC" name="Features" value="AC">
         <label for="vehicle3"> Air Conditioning</label><br>
-        <input type="hidden" name="city" 
-        value="<?php echo (isset($city)) ?  $city : '' ?>" />
-        <input type="hidden" name="interval" 
-        value="<?php echo (isset($interval)) ?  $interval : '' ?>" />
-        <input type="hidden" name="adult" 
-        value="<?php echo (isset($adult)) ?  $adult : '' ?>" />
-        <input type="hidden" name="children" 
-        value="<?php echo (isset($children)) ?  $children : '' ?>" />
-        <input type="hidden" name="room" 
-        value="<?php echo (isset($room)) ?  $room : '' ?>" />
-        <input type="hidden" name="$room_type" 
-        value="<?php echo (isset($room_type)) ?  $room_type: '' ?>" />
-        <input type="hidden" name="bed" 
-        value="<?php echo (isset($bed)) ?  $bed : '' ?>" />
-        <input type="hidden" name="check_ins" 
-        value="<?php echo (isset($check_ins)) ?  $check_ins : '' ?>" />
-        <input type="hidden" name="check_outs)" 
-        value="<?php echo (isset($check_outs)) ?  $check_outs : '' ?>" />
-        <input class="button-29" type="submit" name="Submit" value="Submit" >
+        <input class="button-29" type="submit" name="Submit" value="Submit">
       </form>    
      </div>
 </div>
 </div>   
 <div class="column left"> 
-     <?php
-    $query1= "SELECT * FROM hotel WHERE District='$city'
-     && Room_Type Like '%$room_type%' && Room_Available>='$room' && No_of_beds>='$bed';"; 
-      $query_run=(mysqli_query($conn,$query1));
-  if($query_run->num_rows>0){
-    while($row=$query_run->fetch_assoc()){
-    $name=$row['Name'];
-    $star=$row['Star'];
-    $rating=$row['Rating'];
-    $room_available=$row['Room_Available'];
-    $price=$row['Price'];
-    $features=$row['Features'];
-    $reviews=$row['Reviews'];
-    $picture=$row['picture'];
-    $discount=$row['discount'];
-    ?>
-
-<?php
-if($count==0)
-{
-?>
-<b><div id="No_of_hotels"></div></b>
-<?php
-}
-$count=$count+1;
-?>
-<div id="hotels">
-    <div id="hotelall">
-      <img id="images" src="<?php echo "$picture";?>" alt="Hotel 1">
-      <span id="hotel_Name"><?php echo "$name";?>
-         <br> <span id="Location"><u> <?php echo "$city";?></u>&nbsp;<a href="#"><u>Show on Map</u></a>
-          <br><span id="qualities">Breakfast Included</span>
-        <br><span id="rooms">Rooms left: <?php echo "$room_available";?></span></span>
-        <br>
-        <span id="discount"><?php echo "$discount";?>% Discount Available</span>
-        <br>
-        <span id="stay_info"><?php echo "$interval";?> nights,<?php echo "$adult";?> adults,<?php echo "$children";?> children,<?php echo "$room";?> room
-        ,<?php echo "$room_type";?></span>
-        <br>
-        <span id="Taka">BDT <?php echo "$price";?> &nbsp;
-        <input class="button-29" type="button" value="Book Now" onclick="pay('<?php echo "$name";?>')">
-       </span>
-      </span> 
-      <span id="rating">Excellent<br><span id="reviews"><?php echo "$reviews";?><br></span>
-      <span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>    
-    </span>     
-      <span id="ratings_box"><?php echo "$rating";?></span>
-    </div>
-</div>
     <?php
-    }
-  }
-  
+    include_once 'db_connect.php';
+    if(isset($_POST['Submit'])){
+      $count=0;   
+    if(!empty($_POST['Budget'])) 
+         $budget=$_POST['Budget'];
+         else
+         $budget=null;
+         if(!empty($_POST['Rating'])) 
+          $ratings=$_POST['Rating'];
+          else 
+          $ratings=null;
+          if(!empty($_POST['score'])) 
+            $score=$_POST['score'];
+            else
+            $score=null;
+            if(!empty($_POST['Features'])) 
+              $feature=$_POST['Features'];
+              else
+              $feature=null;
+              if($budget!=null && $ratings!=null && $score!=null && $feature!=null){
+                $query1="SELECT * FROM hotel WHERE Price<='$budget' && Features
+                 Like '%$feature%' && Star='$ratings' && Rating>='$score';"; 
+                }
+             elseif($budget!=null && $ratings!=null && $score!=null && $feature==null){
+              $query1="SELECT * FROM hotel WHERE Price<='$budget' 
+               && Star=='$ratings' && Rating>='$score';";
+                }
+             elseif($budget!=null && $ratings!=null && $score==null && $feature!=null){
+              $query1="SELECT * FROM hotel WHERE Price<='$budget' && Features
+              Like '%$feature%' && Star=='$ratings';";
+                }
+               elseif($budget!=null && $ratings==null && $score!=null && $feature!=null){
+                $query1="SELECT * FROM hotel WHERE Price<='$budget' && Features
+                 Like '%$feature%'  && Rating>='$score';";
+                }
+                elseif($budget==null && $ratings!=null && $score!=null && $feature!=null){
+                  $query1="SELECT * FROM hotel WHERE  && Features
+                  Like '%$feature%' && Star=='$ratings' && Rating>='$score';";
+                  }
+               elseif($budget==null && $ratings==null && $score!=null && $feature!=null){
+                $query1="SELECT * FROM hotel WHERE  && Features
+                Like '%$feature%' && Rating>='$score';";
+                  }
+               elseif($budget==null && $ratings!=null && $score==null && $feature!=null){
+                $query1="SELECT * FROM hotel WHERE  && Features
+                Like '%$feature%' && Star=='$ratings' ;";
+                  }
+                 elseif($budget==null && $ratings!=null && $score!=null && $feature==null){
+                  $query1="SELECT * FROM hotel WHERE 
+                     Star=='$ratings' && Rating>='$score';";
+                  }
+                  elseif($budget!=null && $ratings==null && $score==null && $feature!=null){
+                    $query1="SELECT * FROM hotel WHERE Price<='$budget' && Features
+                    Like '%$feature%' ;";
+                    }
+                 elseif($budget!=null && $ratings==null && $score!=null && $feature==null){
+                  $query1="SELECT * FROM hotel WHERE Price<='$budget'
+                   && Rating>='$score';";
+                    }
+                 elseif($budget!=null && $ratings!=null && $score==null && $feature==null){
+                  $query1="SELECT * FROM hotel WHERE Price<='$budget' 
+                   && Star=='$ratings' ;";
+                    }
+                   elseif($budget!=null && $ratings==null && $score==null && $feature==null){
+                    $query1="SELECT * FROM hotel WHERE Price<='$budget' ;";
+                    }
+                    elseif($budget==null && $ratings!=null && $score==null && $feature==null){
+                      $query1="SELECT * FROM hotel WHERE Star>='$ratings';";
+                      }
+                      elseif($budget==null && $ratings==null && $score!=null && $feature==null){
+                        $query1="SELECT * FROM hotel WHERE  Rating>='$score';";
+                        }
+                        elseif($budget==null && $ratings==null && $score==null && $feature!=null){
+                          $query1="SELECT * FROM hotel WHERE  Features Like '%$feature%';";
+                          }
+                          $query_run=(mysqli_query($conn,$query1));
+                          if($query_run->num_rows>0){
+                            while($row=$query_run->fetch_assoc()){
+                            $name=$row['Name'];
+                            $star=$row['Star'];
+                            $rating=$row['Rating'];
+                            $room_available=$row['Room_Available'];
+                            $price=$row['Price'];
+                            $features=$row['Features'];
+                            $reviews=$row['Reviews'];
+                            $picture=$row['picture'];
+                            $discount=$row['discount'];
+                            ?>
+                        
+                        <?php
+                        if($count==0)
+                        {
+                        ?>
+                        <b><div id="No_of_hotels"></div></b>
+                        <?php
+                        }
+                        $count=$count+1;
+                        ?>
+                        <div id="hotels">
+                            <div id="hotelall">
+                              <img id="images" src="<?php echo "$picture";?>" alt="Hotel 1">
+                              <span id="hotel_Name"><?php echo "$name";?>
+                                 <br> <span id="Location"><u> <?php echo "$city";?></u>&nbsp;<a href="#"><u>Show on Map</u></a>
+                                  <br><span id="qualities">Breakfast Included</span>
+                                <br><span id="rooms">Rooms left: <?php echo "$room_available";?></span></span>
+                                <br>
+                                <span id="discount"><?php echo "$discount";?>% Discount Available</span>
+                                <br>
+                                <span id="stay_info"><?php echo "$interval";?> nights,<?php echo "$adult";?> adults,<?php echo "$children";?> children,<?php echo "$room";?> room</span>
+        <br>
+                                <span id="Taka">BDT <?php echo "$price";?> &nbsp; <input class="button-29" type="button" value="Book Now" onclick="pay('<?php echo "$name";?>')"/></span>
+                              </span> 
+                              <span id="rating">Excellent<br><span id="reviews"><?php echo "$reviews";?><br></span>
+                              <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>    
+                            </span>     
+                              <span id="ratings_box"><?php echo "$rating";?></span>
+                            </div>
+                            <?php
+                            }
+                          }
 
-     
+    }
 ?>
 </div>
 </div>
-      <!-- </div>
-    </div> -->
-
+      </div>
+    </div>
 <!-- Eikhane change korbiiii -->
 <br>
        <footer class="section footer-corporate context-dark">
@@ -512,10 +555,8 @@ $count=$count+1;
     <!-- Global Mailform Output-->
     <div class="snackbars" id="form-output-global"></div>
     <!-- Javascript-->
-    <script src="js/core.min.js"></script>
-    <script src="js/script.js"></script>
-     <script>
-        var name="<?php echo $name; ?>";
+    <script>
+     var name="<?php echo $name; ?>";
       var city="<?php echo $city; ?>";
       var adult="<?php echo $adult; ?>";
       var children="<?php echo $children; ?>";
@@ -533,11 +574,10 @@ $count=$count+1;
           +check_ins+'&check_outs='
           +check_outs);
       }
-      function filt(){
-       
-      }
       document.getElementById("No_of_hotels").innerHTML="<?php echo $city; ?>"+" : "+"<?php echo $count; ?>" + " hotel found";
       </script>
-      
+    <script src="js/core.min.js"></script>
+    <script src="js/script.js"></script>
+    
   </body>
 </html>
